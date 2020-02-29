@@ -33,8 +33,8 @@ This will put the output of the command into your clipboard.
 
 There are example scripts in the example folder (I use some of the scripts in
 there) that might have functionality you want pre-written. We have examples for
-a domain selection menu with dmenu, upload screenshots from Flameshot, and an 
-interactive CLI menu.
+a domain selection menu with dmenu, and an example script that downloads the 
+lastest domains and saves it to a file named 'domains'
 
 ### Planned Features
 - Ability to fetch existing uploads
