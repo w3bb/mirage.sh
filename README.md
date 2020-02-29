@@ -2,6 +2,8 @@
 <h4>A simple command line interface for mirage.photos written in POSIX compliant 
 shell.</h4>
 
+![](https://mirage.re/c1ED8A6FFffdb49C.webm)
+
 ### Features
 - Makes it easier to create scripts that upload to mirage.photos
 - Interact with mirage.photos through your favourite programs with scripts
