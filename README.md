@@ -12,7 +12,6 @@ shell.</h4>
 - Built-in support for copying to the X clipboard
 - Verbose output
 
-
 ### Setup
 The script requires you set your mirage.photos upload key as an environment
 variable. This variable being $MIRAGE_KEY. It's up to you to secure your key.
@@ -27,7 +26,7 @@ used like a Unix program. This means you can use outputs of this script with
 other programs. For example, if you want to copy the link to your clipboard
 you can use xclip like so:
 
-```mirage.sh -d mirage.re skeleton.gif | xclip -selection clipboard```
+```mirage.sh -d mirage.re -u skeleton.gif | xclip -selection clipboard```
 
 This will put the output of the command into your clipboard.
 
