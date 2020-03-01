@@ -8,7 +8,7 @@ check_if_key_is_set() {
  fi
 }
 check_if_file_exists() {
-  if [ ! -f "$1" ]; then 
+  if [ ! -f "$1" ]; then
     printf "ERROR: The file specified doesn't exist!\n"
     exit
   fi
