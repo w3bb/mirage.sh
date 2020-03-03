@@ -16,14 +16,19 @@ print_usage() {
   exit
 }
 
-if [ -z $1 ]; then
+error_conflicting() {
+  printf "ERROR: Multiple operations selected. Please choose one operation to execute.\n"
+  exit
+}
+
+if [ -z "$1" ]; then
   print_usage
 fi
 
 while getopts ":fd:s:u:" opt; do
   case $opt in
     f)
-      will_fetch=1
+      if [ -n "$url_to_shorten" ] || [ -n "$file_to_upload" ]; then error_conflicting; else will_fetch=1; fi
       ;;
     d)
       domain=$OPTARG
@@ -37,18 +42,15 @@ while getopts ":fd:s:u:" opt; do
       exit
       ;;
     s)
-      url_to_shorten=$OPTARG
+      if [ -n "$file_to_upload" ] || [ -n "$will_fetch" ]; then error_conflicting; url_to_shorten=$OPTARG; fi
       ;;
     u)
-      file_to_upload=$OPTARG
+      if [ -n "$will_fetch" ] || [ -n "$url_to_shorten" ]; then error_conflicting; else file_to_upload=$OPTARG; fi
       ;;
   esac
 done
 
-if [ ! -z ${file_to_upload+x} ] && [ ! -z ${url_to_shorten+x} ] || [ ! -z ${url_to_shorten+x} ] && [ ! -z ${will_fetch+x} ] || [ ! -z ${file_to_upload+x} ] && [ ! -z ${will_fetch+x} ] ; then
-  printf "ERROR: Multiple operations have been selected, please only select one.\n"
-  exit
-elif [ ! -z ${file_to_upload+x} ]; then
+if [ -n "${file_to_upload+x}" ]; then
   check_if_key_is_set
   if [ ! -f "$file_to_upload" ]; then
     printf "ERROR: The file specified doesn't exist!\n"
@@ -57,12 +59,12 @@ elif [ ! -z ${file_to_upload+x} ]; then
   printf "%s\n" "$(curl -s -F "file=@$file_to_upload" -F "key=$MIRAGE_KEY" -F "host=$domain" https://api.mirage.re/upload)"
   exit
 
-elif [ ! -z ${url_to_shorten+x} ]; then
+elif [ -n "${url_to_shorten+x}" ]; then
   check_if_key_is_set
   printf "%s\n" "$(curl -s -X POST -d "host=$domain" -d "key=$MIRAGE_KEY" -d "url=$url_to_shorten" https://api.mirage.re/shorten)"
   exit
 
-elif [ ! -z ${will_fetch+x} ]; then
+elif [ -n "${will_fetch+x}" ]; then
   printf "%s\n" "$(curl -s https://api.mirage.re/domains | grep -m1 -oP '\"domain\"\s*:\s*"\K[^\"]+')"
   exit
 fi
