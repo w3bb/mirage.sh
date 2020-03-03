@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
 fi
 
 inputfile=$(realpath $1)
-domain="$(cat domains | dmenu -i -l 20 -fn 'Inconsolata:pixelsize=24')"
+domain="$(<domains dmenu -i -l 20 -fn 'Inconsolata:pixelsize=24')"
 output="$(mirage -d $domain -u $inputfile)"
 
 case $output in https\:\/\/*)
