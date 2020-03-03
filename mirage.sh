@@ -34,11 +34,11 @@ while getopts ":fd:s:u:" opt; do
       domain=$OPTARG
       ;;
     \?)
-      echo "ERROR: Invalid option: -$OPTARG" >&2
+      printf "ERROR: Invalid option: -$%s\n" "$OPTARG"
       exit
       ;;
     :)
-      echo "ERROR: Option -$OPTARG requires an argument." >&2
+      printf "ERROR: Option -%s requires an argument.\n" "$OPTARG"
       exit
       ;;
     s)
