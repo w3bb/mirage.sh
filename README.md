@@ -28,7 +28,7 @@ used like a Unix program. This means you can use outputs of this script with
 other programs. For example, if you want to copy the link to your clipboard
 you can use xclip like so:
 
-```mirage.sh -d mirage.re -u skeleton.gif | xclip -selection clipboard```
+```./mirage.sh -d mirage.re -u skeleton.gif | xclip -selection clipboard```
 
 This will put the output of the command into your clipboard.
 
@@ -36,6 +36,10 @@ There are example scripts in the example folder (I use some of the scripts in
 there) that might have functionality you want pre-written. We have examples for
 a domain selection menu with dmenu, and an example script that downloads the 
 lastest domains and saves it to a file named 'domains'
+
+If you'd like to see some examples, such as a dmenu implementation and a simple
+script to fetch domains and save them to a file, check out the (snippets for this 
+repository)[https://gitgud.io/webb/mirage.sh/snippets]
 
 ### Planned Features
 - Ability to fetch existing uploads
