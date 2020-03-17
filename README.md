@@ -38,8 +38,8 @@ a domain selection menu with dmenu, and an example script that downloads the
 lastest domains and saves it to a file named 'domains'
 
 If you'd like to see some examples, such as a dmenu implementation and a simple
-script to fetch domains and save them to a file, check out the (snippets for this 
-repository)[https://gitgud.io/webb/mirage.sh/snippets]
+script to fetch domains and save them to a file, check out the [snippets for this 
+repository](https://gitgud.io/webb/mirage.sh/snippets)
 
 ### Planned Features
 - Ability to fetch existing uploads
